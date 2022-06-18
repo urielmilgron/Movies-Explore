@@ -8,6 +8,7 @@ import java.util.*;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "Personaje")
 @Getter
@@ -17,31 +18,30 @@ import javax.persistence.*;
  * @author urielmilgron
  */
 public class PersonajeEntity {
+@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE)
+private Long Id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long Id;
+private String image;
 
-    private String image;
+@Column (name="caract_personaje")
+private String nombre;
+private Long edad;
+private Long peso;
 
-    private String denominacion;
+@Column(name = "historia_personaje")
+private String historia;
 
-    @Column(name = "carac_personaje")
-    private Long edad;
-    private Long peso;
-    
-    @Column(name = "biografia")
-    private String historia;
-    
-    @ManyToMany(cascade = {
-    CascadeType.MERGE,
-        CascadeType.PERSIST
-        
-    })
-    @JoinTable(
-    name = "personaje_pelicula",
-            joinColumns = @JoinColumn(name = "personaje_id"),
-            inverseJoinColumns = @JoinColumn(name = "pelicula_id")
-    )
-    private Set<PeliculaEntity> pelicula = new HashSet<>();
+@ManyToMany( //Esté mtm engloba a todas las peliculas
+		cascade = {
+				CascadeType.PERSIST, //Cuando creamos un personaje, peliculas tambien se guardan
+				CascadeType.MERGE //Cuando guardamos cambios en personaje, tambien peliculas
+})
+@JoinTable( //Aca definimos como se combinan los datos de esta relacion.
+		name = "personaje_pelicula", //Nombre de la tabla intermedia.
+		joinColumns = @JoinColumn(name = "personaje_id"), //Definimos a id de pais
+		inverseJoinColumns = @JoinColumn(name = "pelicula_id"))
+        private Set<PeliculaEntity> pelicula = new HashSet<>();
+
+  
 }

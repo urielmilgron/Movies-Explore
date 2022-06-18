@@ -16,11 +16,16 @@ import javax.persistence.*;
  * @author urielmilgron
  */
 public class GeneroEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-    private String image;
-    private String nombre;
-    
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long Id;
+	
+	@Column(name = "nombre_genero")
+	private String nombre;
+	private String image;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "pelicula_id", insertable = false, updatable = false)
+	private PeliculaEntity pelicula;
     
 }
