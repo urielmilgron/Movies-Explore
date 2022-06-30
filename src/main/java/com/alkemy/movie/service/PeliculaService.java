@@ -11,7 +11,7 @@ public class PeliculaService {
 	public PeliculaDTO save(PeliculaDTO dto) {
 		//GUARDAR PELICULA
 		System.out.println("GUARDAR PELICULA");
-		return dto;
+		//return dto; //Test funcionamiento.
 	}
 	
 }

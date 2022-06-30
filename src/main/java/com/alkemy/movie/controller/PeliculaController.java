@@ -21,7 +21,7 @@ public class PeliculaController {
 
 	//Guardamos peliculas
 	@PostMapping
-	public ResponseEntity<PeliculaDTO> save(@RequestBody PeliculaDTO pelicula) {
+	public ResponseEntity<PeliculaDTO> save(@RequestBody PeliculaDTO pelicula) { //Nos retorna el body de pelicula que es de tipo PeliculaDTO
 		
 		PeliculaDTO peliculaGuardada = peliculaService.save(pelicula);
 		//Devolvemos que pelicula fue guardada

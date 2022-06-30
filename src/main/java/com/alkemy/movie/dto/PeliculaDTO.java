@@ -16,9 +16,9 @@ public class PeliculaDTO {
 
 	private Long id;
 	private String image;
-	//private LocalDate fechaCreacion;
+	private LocalDate fechaCreacion;
 	private String titulo;
-	//private Long clasificacion;
+	private Long clasificacion;
 	
 	
 	
