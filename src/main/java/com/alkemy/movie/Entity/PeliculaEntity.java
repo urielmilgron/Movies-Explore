@@ -26,7 +26,7 @@ public class PeliculaEntity {
 	
 	private String image;
 	
-	@Column(name = "fecha_creacion") //Genero columna con caracteristicas de pelicula
+	@Column(name = "fecha_creacion") //Genero columna ya que nombre no va a ser igual por buenas prácticas.
 	@DateTimeFormat(pattern = "yyyy-MM-dd") //Le doy formato a una fecha cuando la declare
 	private LocalDate fechaCreacion;
 	

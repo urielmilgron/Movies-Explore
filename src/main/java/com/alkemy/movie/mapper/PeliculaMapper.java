@@ -3,6 +3,7 @@ package com.alkemy.movie.mapper;
 import com.alkemy.movie.Entity.PeliculaEntity;
 import com.alkemy.movie.dto.PeliculaDTO;
 import org.springframework.stereotype.Component;
+import java.util.*;
 
 @Component
 public class PeliculaMapper {
@@ -24,5 +25,13 @@ public class PeliculaMapper {
         dto.setTitulo(entity.getTitulo());
         dto.setClasificacion(entity.getClasificacion());
         return dto;
+    }
+
+    public List<PeliculaDTO> peliculaEntityList2DTOList(List<PeliculaEntity> entities){
+    List<PeliculaDTO> dtos = new ArrayList<>();
+    for(PeliculaEntity entity : entities){
+        dtos.add(this.peliculaEntity2DTO(entity));
+    }
+    return dtos;
     }
 }

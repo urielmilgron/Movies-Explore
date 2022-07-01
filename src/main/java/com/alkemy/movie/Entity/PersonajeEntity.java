@@ -23,13 +23,9 @@ public class PersonajeEntity {
 private Long Id;
 
 private String image;
-
-@Column (name="caract_personaje")
 private String nombre;
 private Long edad;
 private Long peso;
-
-@Column(name = "historia_personaje")
 private String historia;
 
 @ManyToMany( //Esté mtm engloba a todas las peliculas

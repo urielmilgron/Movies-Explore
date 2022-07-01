@@ -1,10 +1,8 @@
 package com.alkemy.movie.controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 //Dependencias
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.*;
 import com.alkemy.movie.dto.PeliculaDTO;
 import com.alkemy.movie.service.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,13 @@ public class PeliculaController {
 	@Autowired
 	private PeliculaService peliculaService;
 
-	//Guardamos peliculas
+	//Get/Vemos peliculas
+	@GetMapping
+	public ResponseEntity<List<PeliculaDTO>> getAll(){
+    List<PeliculaDTO> peliculas = peliculaService.getAllPeliculas();
+	return ResponseEntity.ok().body(peliculas);
+	}
+	//POST/Guardamos peliculas
 	@PostMapping
 	public ResponseEntity<PeliculaDTO> save(@RequestBody PeliculaDTO pelicula) { //Nos retorna el body de pelicula que es de tipo PeliculaDTO
 		

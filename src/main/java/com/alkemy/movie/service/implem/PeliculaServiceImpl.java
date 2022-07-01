@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.alkemy.movie.dto.PeliculaDTO;
 
+import java.util.List;
+
 //Definimos que es Servicio
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
@@ -17,15 +19,20 @@ public class PeliculaServiceImpl implements PeliculaService {
 	private PeliculaMapper peliculaMapper;
 	@Autowired
 	private PeliculaRepository peliculaRepository;
+
 	public PeliculaDTO save(PeliculaDTO dto) {
 		//Convertimos dto en entidad
 		PeliculaEntity entity = peliculaMapper.peliculaDTO2Entity(dto);
 		//GUARDAMOS PELICULA
 		PeliculaEntity peliculaSaved = peliculaRepository.save(entity);
 		PeliculaDTO result = peliculaMapper.peliculaEntity2DTO(peliculaSaved);
-		System.out.println("GUARDAR PELICULA");
 		return result;
 		//return dto; //Test funcionamiento.
+	}
+	public List<PeliculaDTO> getAllPeliculas() {
+		List<PeliculaEntity> entities = peliculaRepository.findAll();
+		List<PeliculaDTO> result = peliculaMapper.peliculaEntityList2DTOList(entities);
+		return result;
 	}
 	
 }

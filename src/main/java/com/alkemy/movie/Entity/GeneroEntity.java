@@ -19,8 +19,6 @@ public class GeneroEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long Id;
-	
-	@Column(name = "nombre_genero")
 	private String nombre;
 	private String image;
 	
