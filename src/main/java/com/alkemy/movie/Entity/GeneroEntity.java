@@ -21,6 +21,7 @@ public class GeneroEntity {
 	private Long Id;
 	private String nombre;
 	private String image;
+	private boolean deleted = Boolean.TRUE;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pelicula_id", insertable = false, updatable = false)

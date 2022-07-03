@@ -27,6 +27,7 @@ private String nombre;
 private Long edad;
 private Long peso;
 private String historia;
+private boolean deleted = Boolean.TRUE;
 
 @ManyToMany( //Esté mtm engloba a todas las peliculas
 		cascade = {

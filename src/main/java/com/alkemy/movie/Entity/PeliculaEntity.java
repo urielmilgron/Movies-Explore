@@ -7,6 +7,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -14,7 +16,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "Pelicula")
 @Getter
 @Setter
-
+@SQLDelete(sql = "UPDATE pelicula SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 /**
  *
  * @author urielmilgron
@@ -34,6 +37,8 @@ public class PeliculaEntity {
 	
 
 	private Long clasificacion;
+
+	private boolean deleted = Boolean.TRUE;
 	
 	@ManyToMany(mappedBy = "pelicula", cascade = CascadeType.ALL )
 	private List<PersonajeEntity> personaje = new ArrayList<>();

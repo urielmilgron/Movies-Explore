@@ -33,5 +33,12 @@ public class PeliculaController {
 		
 		
 	}
+	//Borramos peliculas
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		this.peliculaService.delete(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
 	
 }
